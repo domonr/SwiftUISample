@@ -40,10 +40,10 @@ struct ContentView: View {
                             .hiraginoW6(30)
                             .padding()
                         Button("Hello") {
-                            print("Hello")
+                            self.data.append("Hello")
                         }.padding()
                         Button(action: {
-                            print("Hello")
+                            self.data.append("★")
                         }, label: {
                             Image(systemName: "star.fill")
                         }).padding()
