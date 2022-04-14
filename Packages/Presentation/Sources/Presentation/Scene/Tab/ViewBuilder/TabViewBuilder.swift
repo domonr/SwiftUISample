@@ -35,8 +35,8 @@ enum TabViewBuilder {
 
         // TODO: - Will replace another viewcontroller.
 
-        let repoListVC3 = RepoListViewBuilder.build(environment: environment)
-        repoListVC3.tabBarItem = .init(title: "Repo", image: UIImage(systemName: "magnifyingglass"), tag: 2)
+        let repoListVC3 = SearchRepoViewBuilder.build(environment: environment)
+        repoListVC3.tabBarItem = .init(title: "SearchRepo", image: UIImage(systemName: "magnifyingglass"), tag: 2)
 
         return [
             repoListVC,
