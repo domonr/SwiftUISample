@@ -57,10 +57,10 @@ struct SearchRepoView: View {
                             Image(systemName: "star")
                             Text("Star")
                         }
+                        .frame(maxWidth: .infinity, minHeight: 40)
+                        .contentShape(Rectangle())
                     }
                     .buttonStyle(AnimateButtonStyle())
-                    .frame(maxWidth: .infinity, minHeight: 40)
-                    .contentShape(Rectangle())
                 }
             }
         }

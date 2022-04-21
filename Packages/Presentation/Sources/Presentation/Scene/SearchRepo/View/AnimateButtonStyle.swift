@@ -15,6 +15,6 @@ struct AnimateButtonStyle: ButtonStyle {
         return configuration
             .label
             .scaleEffect(isPressed ? 0.9 : 1.0)
-            .animation(.easeOut(duration: 0.2), value: isPressed)
+            .animation(.easeOut(duration: 0.1), value: isPressed)
     }
 }
