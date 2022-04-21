@@ -31,18 +31,21 @@ struct SearchRepoView: View {
     var body: some View {
         List {
             ForEach(dataSource.repositories) { r in
-                VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         KFImage(r.owner.avatarUrl)
                             .resizable()
                             .frame(width: 35, height: 35)
                             .scaledToFit()
+                            .cornerRadius(17)
                         VStack(alignment: .leading, spacing: 0) {
                             Text(r.fullName)
                             Text(r.owner.login)
+                                .bold()
                         }
                     }
                     Text(r.description ?? "")
+                        .lineLimit(2)
                     HStack(spacing: 16) {
                         HStack(spacing: 4) {
                             Image(systemName: "star")
@@ -59,6 +62,7 @@ struct SearchRepoView: View {
                         }
                         .frame(maxWidth: .infinity, minHeight: 40)
                         .contentShape(Rectangle())
+                        .background(Color(UIColor.lightGray))
                     }
                     .buttonStyle(AnimateButtonStyle())
                 }
