@@ -43,6 +43,24 @@ struct SearchRepoView: View {
                         }
                     }
                     Text(r.description ?? "")
+                    HStack(spacing: 16) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "star")
+                            Text("\(r.stargazersCount)")
+                        }
+                        Text(r.language ?? "")
+                    }
+                    Button {
+                        print("did tap")
+                    } label: {
+                        HStack(alignment: .center, spacing: 4) {
+                            Image(systemName: "star")
+                            Text("Star")
+                        }
+                    }
+                    .buttonStyle(AnimateButtonStyle())
+                    .frame(maxWidth: .infinity, minHeight: 40)
+                    .contentShape(Rectangle())
                 }
             }
         }
