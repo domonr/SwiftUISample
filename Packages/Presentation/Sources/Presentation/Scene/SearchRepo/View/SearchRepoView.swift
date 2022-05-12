@@ -31,42 +31,46 @@ struct SearchRepoView: View {
     var body: some View {
         List {
             ForEach(dataSource.repositories) { r in
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
-                        KFImage(r.owner.avatarUrl)
-                            .resizable()
-                            .frame(width: 35, height: 35)
-                            .scaledToFit()
-                            .cornerRadius(17)
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(r.fullName)
-                            Text(r.owner.login)
-                                .bold()
-                        }
-                    }
-                    Text(r.description ?? "")
-                        .lineLimit(2)
-                    HStack(spacing: 16) {
-                        HStack(spacing: 4) {
-                            Image(systemName: "star")
-                            Text("\(r.stargazersCount)")
-                        }
-                        Text(r.language ?? "")
-                    }
-                    Button {
-                        print("did tap")
-                    } label: {
-                        HStack(alignment: .center, spacing: 4) {
-                            Image(systemName: "star")
-                            Text("Star")
-                        }
-                        .frame(maxWidth: .infinity, minHeight: 40)
-                        .contentShape(Rectangle())
-                        .background(Color(UIColor.lightGray))
-                    }
-                    .buttonStyle(AnimateButtonStyle())
+                RepoListItem(repo: r)
+            }
+        }.listStyle(PlainListStyle())
+    }
+    
+    private func repoView(repo: GitHubRepository) -> some View {
+        return VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                KFImage(repo.owner.avatarUrl)
+                    .resizable()
+                    .frame(width: 35, height: 35)
+                    .scaledToFit()
+                    .cornerRadius(17)
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(repo.fullName)
+                    Text(repo.owner.login)
+                        .bold()
                 }
             }
+            Text(repo.description ?? "")
+                .lineLimit(2)
+            HStack(spacing: 16) {
+                HStack(spacing: 4) {
+                    Image(systemName: "star")
+                    Text("\(repo.stargazersCount)")
+                }
+                Text(repo.language ?? "")
+            }
+            Button {
+                print("did tap")
+            } label: {
+                HStack(alignment: .center, spacing: 4) {
+                    Image(systemName: "star")
+                    Text("Star")
+                }
+                .frame(maxWidth: .infinity, minHeight: 40)
+                .contentShape(Rectangle())
+                .background(Color(UIColor.lightGray))
+            }
+            .buttonStyle(AnimateButtonStyle())
         }
     }
 }
